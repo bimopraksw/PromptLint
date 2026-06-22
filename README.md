@@ -2,6 +2,10 @@
 
 ![PromptLint banner](assets/banner.jpg)
 
+### [▶ Try the live playground](https://bimopraksw.github.io/PromptLint/)
+
+[![Try it live](https://img.shields.io/badge/Try_it-Live_Playground-6a4fb3?style=for-the-badge)](https://bimopraksw.github.io/PromptLint/)
+
 An always-on English review and improvement layer for AI coding agents.
 
 PromptLint quietly improves your English while preserving your intent and never blocking your work. It behaves like ESLint plus Grammarly plus a patient English teacher. You should never need perfect English to get excellent results.
