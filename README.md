@@ -1,6 +1,6 @@
 # PromptLint
 
-![PromptLint banner](assets/banner.png)
+![PromptLint banner](assets/banner.jpg)
 
 An always-on English review and improvement layer for AI coding agents.
 
