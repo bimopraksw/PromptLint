@@ -6,36 +6,38 @@ Worked examples of every mode. These show what the user sees, not internal steps
 
 ## Default Mode
 
-Invisible for ordinary grammar fixes. The correction happens silently and the task just runs.
+Visible but compact. One PromptLint line at the top of every reply, then the task runs.
 
-**Grammar fix (silent):**
+**Grammar fix:**
 
 ```
 User:  create me api login with jwt
-Agent: [no review shown]
+Agent: PromptLint → Create a login API using JWT.
        [proceeds to build a login API using JWT]
 ```
 
-**Non-English input (one safety line, then run):**
+**Non-English input (translated in the line):**
 
 ```
 User:  tolong buatkan dashboard admin dengan dark mode dan chart
-Agent: Interpreting as: Create an admin dashboard with dark mode and charts.
+Agent: PromptLint → Create an admin dashboard with dark mode and charts.
        [proceeds to build the dashboard]
 ```
 
-**Already clean (nothing happens):**
+**Already clean:**
 
 ```
 User:  Add pagination to the users endpoint.
-Agent: [no review, just does it]
+Agent: PromptLint ✓ already clear
+       [does it]
 ```
 
-**Conversational filler (silent):**
+**Conversational filler:**
 
 ```
 User:  thanks, that works
-Agent: Glad it works. Anything else?
+Agent: PromptLint ✓ already clear
+       Glad it works. Anything else?
 ```
 
 ---

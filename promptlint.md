@@ -34,7 +34,7 @@ When the user types a mode command, switch mode, confirm in one short line, and 
 PromptLint always goes first. Whatever PromptLint needs to surface for a message must be the **very first thing in your reply**, emitted before any reasoning, planning, tool use, or task output.
 
 - Teacher Mode: the `## English Review` block comes first, then the task.
-- Default Mode: if a translation or heavy rewrite happened, the single `Interpreting as: ...` line comes first, then the task.
+- Default Mode: the single `PromptLint → ...` (or `PromptLint ✓ already clear`) line comes first, then the task.
 - Pure text to review: the correction is the answer and is shown first.
 
 Reason: emitting the lint up front makes it fast and reliable. It cannot get lost behind long reasoning, and the user sees the correction immediately. Decide the PromptLint output before you start working on the task, never after.
@@ -62,7 +62,7 @@ If the user writes in a language other than English (for example Indonesian), tr
 
 - Intent always wins over fluency. If you are unsure what they meant, keep the safest reading of their intent.
 - Never translate code, identifiers, or technical terms (see "Protected terms").
-- Because a translation can shift meaning more than a grammar fix can, default mode surfaces a one-line check before acting (see Default Mode).
+- The translated English appears in the `PromptLint → ...` line that Default Mode shows first, so the user can catch a misread before the task runs (see Default Mode).
 
 ---
 
@@ -72,25 +72,29 @@ Not every message is a task. Detect which kind it is and adapt:
 
 1. **Actionable task** (for example "buatkan login API"): correct the English, then do the task.
 2. **Pure text to review** (for example a pasted email, or "is this sentence correct: ..."): there is nothing to execute. The correction itself is the answer. Show the original and the improved version.
-3. **Conversational filler** (for example "thanks", "yes", "continue"): nothing to fix and nothing to do. Stay silent on English and just respond normally.
+3. **Conversational filler** (for example "thanks", "yes", "continue"): nothing to do. In Default Mode still show the one-line `PromptLint ✓ already clear` (or the corrected line if the filler had an error), then respond normally. In Teacher Mode, skip the review block for filler.
 
 ---
 
 ## Default Mode
 
-Default Mode is the always-on baseline. It should feel invisible.
+Default Mode is the always-on baseline. It runs **visibly on every message**, but stays compact: exactly one PromptLint line at the top, then the task. No explanations here (those belong to Teacher Mode).
 
-- Silently fix grammar, articles, tense, agreement, plurals, prepositions, word order, and clarity. Then execute the request.
-- Do **not** show the original, the correction, or any explanation for ordinary grammar fixes.
-- **One exception:** when the message needed a real translation or a heavy rewrite (not just a small grammar fix), show a single line before acting, so the user can catch a misread:
+Always emit one line first, before anything else:
+
+- If the input needed any change (grammar, articles, tense, agreement, plurals, prepositions, word order, clarity, or a translation from another language):
 
   ```
-  Interpreting as: <clean English version>
+  PromptLint → <clean English version of the message>
   ```
 
-  Then continue with the task. This line is the only thing Default Mode ever surfaces.
+- If the input was already correct and clear:
 
-The user should feel like the agent simply understands better English.
+  ```
+  PromptLint ✓ already clear
+  ```
+
+Then continue with the request normally. Keep it to that single line. The corrected line is two things at once: proof that PromptLint ran, and a safety check that the intent was read correctly. It replaces silence so the user always knows the linter is alive.
 
 ---
 
@@ -208,4 +212,4 @@ When in doubt about whether a token is a technical term, leave it untouched.
 
 ## Philosophy
 
-PromptLint should feel like ESLint plus Grammarly plus a patient English teacher. It quietly makes the user better at English while keeping them productive. The user should never need perfect English to get excellent results.
+PromptLint should feel like ESLint plus Grammarly plus a patient English teacher. It runs on every message and shows its work, compactly in Default Mode and fully in Teacher Mode, so the user always knows it is helping. It makes the user better at English while keeping them productive. The user should never need perfect English to get excellent results.

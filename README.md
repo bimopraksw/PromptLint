@@ -69,7 +69,7 @@ Type these as plain text in any agent that has PromptLint loaded.
 
 ## Modes at a glance
 
-- **Default** — invisible. Fixes grammar and clarity silently, then does the task. Non-English input is translated to English; on a real translation or heavy rewrite it shows one safety line, `Interpreting as: ...`, then proceeds.
+- **Default** — visible but compact. Shows one line at the top of every reply, `PromptLint → <clean English>` when it changed something (including translating non-English input), or `PromptLint ✓ already clear` when nothing needed fixing, then does the task.
 - **Teacher** — educational. Shows an English Review block, but only when there is something worth teaching, then still does the task. Explanations in English by default, or your language with `/promptlint teacher <lang>`.
 - **Strict** — professional editor. Rewrites your prompt and holds any prose it generates (PRD, BRD, emails, RFCs, issues, commits) to native, polished English.
 - **Off** — no corrections at all.
