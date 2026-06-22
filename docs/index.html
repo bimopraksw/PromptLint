@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PromptLint Playground</title>
+  <meta name="description" content="Try PromptLint: an always-on English review layer for AI agents. See Default, Teacher, Strict and Off modes in action." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <img class="banner" src="banner.png" alt="PromptLint banner" />
+    <p class="tagline">Better English. Better Prompts. Better Results.</p>
+    <a class="install-btn" href="https://github.com/bimopraksw/PromptLint" target="_blank" rel="noopener">Install it &rarr;</a>
+  </header>
+
+  <main class="playground">
+    <section class="controls">
+      <h2>Mode</h2>
+      <div class="modes" id="modes">
+        <button class="mode is-active" data-mode="default">Default</button>
+        <button class="mode" data-mode="teacher">Teacher</button>
+        <button class="mode" data-mode="strict">Strict</button>
+        <button class="mode" data-mode="off">Off</button>
+      </div>
+      <p class="mode-hint" id="modeHint"></p>
+
+      <h2>Try an example</h2>
+      <div class="examples" id="examples"></div>
+    </section>
+
+    <section class="stage">
+      <label class="field-label" for="input">Your prompt</label>
+      <textarea id="input" rows="3" placeholder="Pick an example, or type your own..."></textarea>
+      <button class="lint-btn" id="lintBtn">Lint it</button>
+
+      <div class="output" id="output">
+        <p class="placeholder">Choose a mode and an example, then press <strong>Lint it</strong>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>This is the static showcase (Tier 1). It demonstrates the bundled examples.
+       To lint your own text live, install PromptLint into your agent.</p>
+    <p><a href="https://github.com/bimopraksw/PromptLint" target="_blank" rel="noopener">github.com/bimopraksw/PromptLint</a> &middot; MIT</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
